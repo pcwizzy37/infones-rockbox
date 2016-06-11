@@ -1009,7 +1009,7 @@ void InfoNES_pAPUInit(void)
   /* Sound Hardware Init */
   InfoNES_SoundInit();
 
-  ApuQuality = pAPU_QUALITY - 1;            /* 1: 22050, 2: 44100 [samples/sec] */
+  ApuQuality = pAPU_QUALITY - 2;            /* 1: 22050, 2: 44100 [samples/sec] */
 
   ApuPulseMagic      = ApuQual[ ApuQuality ].pulse_magic;
   ApuTriangleMagic   = ApuQual[ ApuQuality ].triangle_magic;
