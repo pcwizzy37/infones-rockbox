@@ -558,25 +558,28 @@ void InfoNES_MessageBox(char *pszMsg, ...)
 
 void menu(void)
 {
-    MENUITEM_STRINGLIST(menu, "Menu", NULL, "Load", "Save", "Video", "Sound", "Quit");
+    MENUITEM_STRINGLIST(menu, "Menu", NULL, "Start Button", "Load", "Save", "Video", "Sound", "Quit");
 
     switch (rb->do_menu(&menu, NULL, NULL, false))
     {
         case 0:
+            dwPad1 |= 1 << 3;
+        case 1:
             load();
             break;
-        case 1:
+        case 2:
             save();
             break;
-        case 2:
+        case 3:
             video_menu();
             break;
-        case 3:
+        case 4:
             sound_onoff();
             break;
-        case 4:
+        case 5:
             dwSystem|=PAD_SYS_QUIT;
             quit=1;
+            break;
             break;
         default:
             break;	
