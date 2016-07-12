@@ -433,7 +433,7 @@ void poll_event(void)
 
     rb->yield();
 
-    if(bs & NES_BUTTON_MENU)
+    if(rb->button_hold())
         menu();
 
     return;
