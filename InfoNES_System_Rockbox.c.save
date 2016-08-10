@@ -25,8 +25,8 @@
 #include "InfoNES_System.h"
 #include "InfoNES_pAPU.h"
 #include "keymaps.h"
-unsigned char NES_BUTTON_UP = BUTTON_NONE;
-unsigned char NES_BUTTON_B = BUTTON_MENU;
+static unsigned char NES_BUTTON_UP BUTTON_NONE;
+static unsigned char NES_BUTTON_B BUTTON_MENU;
 int start_application(char *filename);
 void poll_event(void);
 int LoadSRAM(void);
@@ -559,7 +559,7 @@ void InfoNES_MessageBox(char *pszMsg, ...)
 
 void menu(void)
 {
-    MENUITEM_STRINGLIST(menu, "Menu", NULL, "Start Button", "Load", "Save", "Video", "Sound", "Quit", "MENU function");
+    MENUITEM_STRINGLIST(menu, "Menu", NULL, "Start Button", "Load", "Save", "Video", "Sound", "Quit");
 
     switch (rb->do_menu(&menu, NULL, NULL, false))
     {
@@ -581,19 +581,13 @@ void menu(void)
             dwSystem|=PAD_SYS_QUIT;
             quit=1;
             break;
-        case 6:
-if (NES_BUTTON_B == BUTTON_MENU ) 
-{
-            NES_BUTTON_B = BUTTON_NONE;
-            NES_BUTTON_UP = BUTTON_MENU;
-            break;   }
-else {
-            NES_BUTTON_UP = BUTTON_NONE;
-            NES_BUTTON_B = BUTTON_MENU; }
-
-
         default:
-            break;	
+             NES_BUTTON_B = BUTTON_NONE;
+             NES_BUTTON_UP = BUTTON_MENU;
+            break;	}
+          else { NES_BUTTON_B = BUTTON_MENU;
+                 NES_BUTTON_UP = BUTTON_NONE;
+                 break; }
     }
     return;
 }

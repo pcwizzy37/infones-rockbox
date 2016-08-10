@@ -58,10 +58,10 @@
 
 #elif CONFIG_KEYPAD == IPOD_4G_PAD
 
-#define NES_BUTTON_UP           BUTTON_NONE
+//#define NES_BUTTON_UP           BUTTON_NONE
 #define NES_BUTTON_DOWN         BUTTON_PLAY
 #define NES_BUTTON_A            BUTTON_SELECT
-#define NES_BUTTON_B            BUTTON_MENU
+//#define NES_BUTTON_B            BUTTON_MENU
 #define NES_BUTTON_START        BUTTON_NONE
 #define NES_BUTTON_SELECT       BUTTON_NONE
 #define NES_BUTTON_MENU         BUTTON_NONE
